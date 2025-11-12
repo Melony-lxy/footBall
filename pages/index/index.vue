@@ -1,5 +1,8 @@
 <template>
 	<view class="container">
+		<view class="tap" @click="onPage">
+			<text>切换计算方式</text>
+		</view>
 		<view class="card">
 			<view class="card-title">赔率输入</view>
 			<view class="input-group">
@@ -230,6 +233,12 @@ const strategyLabels = {
 	'none': '无方案'
 };
 
+const onPage = () =>{
+	uni.navigateTo({
+		url: '/pages/home/home'
+	})
+}
+
 // 计算概率分析
 const homeProb = computed(() => homeOdds.value ? 1 / parseFloat(homeOdds.value) : 0);
 const awayProb = computed(() => awayOdds.value ? 1 / parseFloat(awayOdds.value) : 0);
@@ -445,6 +454,18 @@ function calculateHedge(totalCapital, home, away, draw) {
 	padding: 24rpx;
 	background: #f5f6fa;
 	min-height: 100vh;
+}
+
+.tap{
+	margin: 20rpx 0;
+	display: flex;
+	>text{
+		padding: 10rpx 30rpx;
+		box-sizing: border-box;
+		background-color: #10b981;
+		color: #fff;
+		border-radius: 20rpx;
+	}
 }
 
 .card {
